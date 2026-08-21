@@ -1,0 +1,56 @@
+Personal Site — Content Plan (The Builder, Recruiter-facing, English)
+核心叙事
+> "I build interactive experiences where hardware meets AI — and I prove they work with real audience numbers."
+三根支柱（每个项目都围绕它们组织）：
+1. Engineering depth — WebCodecs 离屏渲染、onnxruntime-web WASM 推理、ESP32/EEG 硬件、缓存分块
+2. From 0 to 1 delivery — 独立原型 owner、3 人团队全责、8 小时 hackathon、闭环项目
+3. Audience proof — 每个作品带量化结果（+55% engagement、1M+ 播放、50K 粉、3M+ 赞）
+---
+板块 1 — Hero
+- 名字：Chengyu Wang
+- 定位语：Design Engineer building hardware×AI interactive experiences — from prototype to live audience.
+- 状态行：MEng Design Engineering, Imperial College London · Seeking placement-year internship (Apr–Sep) · Open to US / EU / China / remote
+- 3 个头部数字条：50K+ audience · 3M+ total likes · +55% onsite engagement lift
+- CTA：View Projects ↓ · Download CV
+板块 2 — About（约 150 词）
+Para 1（身份）： Design Engineering student who builds interactive systems where hardware meets AI. Delivered as a technical intern at Arcade Strange: AI vending machines, a real-time 3D hologram installation, and a brainwave-controlled Scalextric for CeX — cutting dialogue latency 35% and lifting onsite engagement 55%. Prototypes fast and ships end-to-end.
+Para 2（独特点）： Also runs an ACG content platform to 50K+ followers and 3M+ likes, and built KoePuppet, a browser-only lip-sync generator (React/WebCodecs/onnxruntime) to serve that audience — because the best way to know if an experience works is to put it in front of people.
+Para 3（目标）： Seeking a 6-month placement internship (April–September) in creative technology, hardware interaction, or AI product. Fluent in Chinese, English, Spanish.
+板块 3 — Selected Projects（旗舰，4 卡片，每张固定格式 Context → Role → Tech → Result）
+1. KoePuppet — Auto Lip-Sync Singing Generator (Personal, 2026)
+- Context: 观察到对口型 meme 需求上升，但缺趁手工具
+- Role: 独立开发（前端 + ML 推理 + 渲染导出全链路）
+- Tech: React 19/TS/Vite · onnxruntime-web WASM 推理 · WebCodecs (H.264/AAC) + mp4-muxer 确定性离屏渲染 · Cache API 分块缓存 400MB+ 模型 · Demucs 人声分离
+- Result: 单条发布 +5K 粉、全网 1M+ 播放 · GitHub link
+2. Brainwave-Driven Scalextric — CeX Mind Control Campaign (Arcade Strange, 2026)
+- Context: CeX 品牌活动的现场脑控赛车体验（SAGE Exhibition, London Excel）
+- Role: 3 人团队中原型全责
+- Tech: Raspberry Pi web app → serial → Arduino · Muse EEG 专注度信号 · MOSFET PWM 调速 · 速度限制层
+- Result: +55% onsite engagement · 稳定支撑数天公开展出
+3. Lobster Hologram — Real-Time 3D Display (Arcade Strange, 2026)
+- Context: 全周期 3D 全息展示项目
+- Role: 全周期交付
+- Tech: Looking Glass Bridge + Liteforms 集成
+- Result: 消除现场帧掉落，稳定实时输出
+4. AI Vending Machines — SAGE Exhibition (Arcade Strange, 2026)
+- Context: 展会用 AI 自动售货机
+- Role: 端到端 R&D
+- Tech: Tavus GenAI 人物微调
+- Result: 对话延迟 -35%
+> 补充：底部可加一行 "More" → Rummikub web game、Liquid Level Indicator、Kinetic Plant Companion、Modular Aircraft Seat、SENDTech Hackathon（1 行链接/摘要）
+板块 4 — Audience & Content（差异化证据块，放在 Projects 之后）
+标题：*"Proof I ship to real people"*
+- 分平台数据小表：RedNote 30K · Douyin 10K · Bilibili 10K · TikTok/X ~1K（海外分发）· 全网 3M+ 赞
+- 两行策略说明：内容 = 趋势感知 → 工具化 → 分发；案例 = KoePuppet 发布即涨粉
+- 各平台链接（可点击验证）
+- 一句话收尾：*"I build tools to serve content trends — and measure the result in followers and plays."*
+板块 5 — Experience（时间线，倒序，每条 2-3 行）
+- Technical Intern — Arcade Strange (2026, London) — AI 售货机 / 全息 / 脑控 Scalextric
+- Content Creator & Social Media Operator (2024–Present) — 0→50K 粉, 3M+ 赞
+- Canton Fair Interpreter — Shouqu (2026, Guangzhou) — 西班牙语商务谈判, 3 MOUs, ¥8.5M
+- Process Engineering Intern — Dexin (2025, China) — 生产文档 100% 准确率
+板块 6 — Toolkit
+三栏：Hardware×AI（ESP32、Arduino C++、Muse EEG、onnxruntime-web、Tavus、传感器融合）· Web（React/TS、WebCodecs、Vite、JavaScript）· Design（Fusion 360、SolidWorks、Rhino、Procreate、After Effects、Figma、MATLAB）
+一行语言：Chinese (native) · English (C1) · Spanish (B2)
+板块 7 — Contact / CV
+Email · LinkedIn · GitHub · 各平台账号 · Download CV (PDF)

@@ -1,0 +1,270 @@
+export const site = {
+  name: "Chengyu Wang",
+  firstName: "Chengyu",
+  lastName: "Wang",
+  role: "DESIGN ENGINEER",
+  tagline: "Design Engineer building hardware×AI interactive experiences — from prototype to live audience.",
+  status:
+    "MEng Design Engineering, Imperial College London · Class of 2027 · Available for 6-month placement internship (Apr–Sep 2026) · UK/EU/US/CN/Remote",
+  stats: [
+    { value: "+55%", label: "onsite engagement lift" },
+  ],
+  email: "cw2124@ic.ac.uk",
+  phone: "+44 7741741955",
+  city: "LONDON, UK / CHINA",
+  cityImage: "https://picsum.photos/seed/city/1920/1080",
+  cv: "/cv.pdf",
+  socials: [
+    { label: "LINKEDIN ↗", href: "#" },
+    { label: "GITHUB ↗", href: "#" },
+    { label: "REDNOTE ↗", href: "#" },
+    { label: "BILIBILI ↗", href: "#" },
+    { label: "TIKTOK ↗", href: "#" },
+    { label: "X ↗", href: "#" },
+  ],
+};
+
+export const about = [
+  "Heya! I'm Chengyu — a Design Engineering student at Imperial who builds interactive systems where hardware meets AI. I love taking things from prototype to live audience, and I kind of do everything along the way.",
+  "Embedded. Web. ML inference. Content. I've shipped installations for CeX and SAGE, cut AI latency by 35%, boosted onsite engagement by 55%, and grew a platform to 50K followers. I prototype fast, I ship end-to-end, and I actually put my work in front of real people.",
+  "Class of 2027. Looking for a 6-month placement (Apr–Sep 2026) — UK/EU/US/CN/remote. Fluent in Chinese, English, and Spanish. Let's build something cool.",
+];
+
+export const experience = [
+  {
+    name: "ARCADE STRANGE",
+    role: "TECHNICAL INTERN",
+    years: "2026",
+    location: "LONDON",
+    summary: "Delivered 3 live exhibition installations for CeX and SAGE — AI latency −35%, onsite engagement +55%.",
+    blocks: [
+      {
+        title: "Brainwave-Controlled Scalextric · CeX Mind Control Campaign",
+        rows: [
+          {
+            label: "Situation",
+            text: "CeX needed a high-impact interactive experience for a 3-day public exhibition at London Excel to drive brand engagement.",
+          },
+          {
+            label: "Task",
+            text: "Single-handedly build a racing game controlled by brainwave signals, reliable enough for thousands of public users.",
+          },
+          {
+            label: "Action",
+            text: "Architected the end-to-end pipeline: Raspberry Pi web app (Python) → serial → Arduino (C++), decoding Muse EEG focus signals into real-time PWM speed control. Implemented a safety speed-limiting layer to prevent sudden acceleration.",
+          },
+          {
+            label: "Result",
+            text: "Ran flawlessly across 3 days of heavy public use; onsite engagement lifted 55%.",
+          },
+        ],
+      },
+      {
+        title: "AI Vending Machines · SAGE Exhibition",
+        rows: [
+          {
+            label: "Action",
+            text: "Tuned Tavus GenAI persona models for interactive AI vending machines; redesigned prompt structure and response flow to reduce wait time.",
+          },
+          {
+            label: "Result",
+            text: "Dialogue latency cut by 35%, creating a smoother experience at a high-traffic exhibition.",
+          },
+        ],
+      },
+      {
+        title: "Real-Time 3D Hologram Installation",
+        rows: [
+          {
+            label: "Action",
+            text: "Integrated Looking Glass Bridge with Liteforms; debugged frame-dropping issues by optimizing the render pipeline and asset loading strategies.",
+          },
+          {
+            label: "Result",
+            text: "Stable real-time hologram output with zero frame drops across exhibition hours.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "DEXIN",
+    role: "PROCESS ENGINEERING INTERN",
+    years: "2025",
+    location: "CHINA",
+    summary: "Production documentation at 100% accuracy for audited processes.",
+    blocks: [
+      {
+        title: "Process Documentation",
+        rows: [
+          {
+            label: "Action",
+            text: "Managed and standardized production documentation workflows.",
+          },
+          {
+            label: "Result",
+            text: "Achieved 100% documentation accuracy for audited processes.",
+          },
+        ],
+      },
+    ],
+  },
+];
+
+export const beyondWork = [
+  {
+    name: "SHOUQU",
+    role: "CANTON FAIR INTERPRETER",
+    years: "2026",
+    location: "GUANGZHOU",
+    summary: "Spanish business interpretation at high-level negotiations — 3 on-site MOUs, ¥8.5M orders.",
+    blocks: [
+      {
+        title: "Canton Fair Interpreting",
+        rows: [
+          {
+            label: "Action",
+            text: "Provided Spanish business interpretation for Shouqu senior management, facilitating cross-language negotiations with Spanish and Argentinian clients.",
+          },
+          {
+            label: "Result",
+            text: "Secured 3 on-site MOUs representing ¥8.5M in follow-up orders.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "PERSONAL — CONTENT PLATFORM & TOOLS",
+    role: "CONTENT CREATOR & SOCIAL MEDIA OPERATOR",
+    years: "2024–PRESENT",
+    location: "REMOTE",
+    summary: "Grew an ACG content platform 0 → 50K followers; built KoePuppet as an in-house tool.",
+    blocks: [
+      {
+        title: "KoePuppet · Auto Lip-Sync Singing Generator",
+        rows: [
+          {
+            label: "Context",
+            text: "Identified a surge in lip-sync meme demand on Chinese social platforms with no accessible tooling available.",
+          },
+          {
+            label: "Action",
+            text: "Independently built a browser-only lip-sync generator: React/TypeScript frontend, ONNX runtime-web WASM inference, WebCodecs H.264/AAC encoding with deterministic offscreen rendering, mp4-muxer export, Cache API chunked loading of a 400MB+ model, Demucs vocal separation.",
+          },
+          {
+            label: "Result",
+            text: "A single launch post drove +5K followers and 1M+ cumulative plays; validated product-market fit with a real audience.",
+          },
+        ],
+      },
+      {
+        title: "ACG Content Platform Operations",
+        rows: [
+          {
+            label: "Action",
+            text: "Grew 0 → 50K followers across RedNote, Douyin, Bilibili, and TikTok by analyzing trends and building custom tools to serve content creation needs.",
+          },
+          {
+            label: "Result",
+            text: "3M+ aggregate likes; proven ability to build, ship, and measure audience response.",
+          },
+        ],
+      },
+    ],
+  },
+];
+
+export const projects = [
+  {
+    emoji: "🎤",
+    title: "KoePuppet",
+    subtitle: "Auto Lip-Sync Singing Generator",
+    client: "PERSONAL",
+    year: "2026",
+    context: "Surge in lip-sync meme demand with no accessible tooling — shipped a browser-only virtual singer app to fill the gap.",
+    role: "Independent build — frontend, ML inference and render/export across the whole pipeline.",
+    tech: "React 19 + TypeScript + Vite · SOFA alignment model on onnxruntime-web (WASM) with Viterbi decoding + G2P phoneme conversion (pinyin-pro + CN/JP/EN dictionaries) · Demucs vocal separation · WebCodecs (H.264/AAC) + mp4-muxer deterministic offline rendering · Cache API chunked loading of 400MB+ models with progress + resume",
+    result: "Auto-aligns character art to lyrics and beat from NetEase/QQ Music links or local MP3+LRC, exporting H.264 video with no backend; a single launch post drove +5K followers and 1M+ cumulative plays.",
+    link: "#",
+  },
+  {
+    emoji: "🧠",
+    title: "Brainwave-Driven Scalextric",
+    subtitle: "CeX Mind Control Campaign",
+    client: "ARCADE STRANGE / CEX",
+    year: "2026",
+    context: "Brainwave-driven Scalextric racing for CeX's Mind Control campaign at SAGE Exhibition (London Excel).",
+    role: "Sole owner of the working prototype in a 3-person team.",
+    tech: "Raspberry Pi web app streaming Muse EEG attention scores over serial to an Arduino · MOSFET-based PWM track speed control · speed-limiter layer",
+    result: "Lifted onsite engagement by 55%.",
+    link: "#",
+  },
+  {
+    emoji: "💧",
+    title: "Liquid Level Indicator",
+    subtitle: "Product Design Engineering",
+    client: "IMPERIAL COLLEGE LONDON",
+    year: "2026",
+    context: "Assistive liquid level indicator designed for blind users.",
+    role: "Co-developed concept → functional prototype with a 4-person team; served as CIO establishing technical partnerships and executing 3+ collaborative sprints with Beyond Sight.",
+    tech: "ESP32 · enclosure modeling + PCB integration",
+    result: "Achieved ±2ml accuracy with <100ms haptic feedback latency.",
+    link: "#",
+  },
+  {
+    emoji: "🌿",
+    title: "Kinetic Plant Companion",
+    subtitle: "Physical Computing",
+    client: "IMPERIAL COLLEGE LONDON",
+    year: "2025",
+    context: "Physical computing brief — a kinetic plant companion that responds to its environment.",
+    role: "Modeled the assembly in Fusion 360; programmed the ESP32 in Arduino C++ for sensor fusion and motor control.",
+    tech: "Fusion 360 · ESP32 · Arduino C++ · MATLAB (kinematics + power budgets)",
+    result: "Reduced prototype iterations by 50%; <50ms motor response; 12–16 hours runtime at 95% positioning accuracy.",
+    link: "#",
+  },
+  {
+    emoji: "✈️",
+    title: "Modular Aircraft Seat",
+    subtitle: "Sustainable Design Engineering",
+    client: "IMPERIAL COLLEGE LONDON",
+    year: "2025",
+    context: "Sustainable design brief — a modular aircraft seat applying circular economy principles.",
+    role: "Designed the modular seat in Rhino applying circular economy principles.",
+    tech: "Rhino · Granta Eco Audit (full lifecycle assessment)",
+    result: "35% mass reduction, >95% material recovery; validated 54,000 kg CO2e savings per seat.",
+    link: "#",
+  },
+];
+
+export const moreProjects = [
+  { name: "Rummikub web game", link: "#" },
+  { name: "Lobster Hologram — Arcade Strange", link: "#" },
+  { name: "AI Vending Machines — SAGE", link: "#" },
+  { name: "SENDTech Hackathon", link: "#" },
+];
+
+export const toolkit = {
+  columns: [
+    {
+      title: "Embedded & Hardware",
+      items: ["ESP32", "Arduino C++", "Raspberry Pi", "Muse EEG", "MOSFET PWM", "Sensor fusion"],
+    },
+    {
+      title: "Frontend & Web",
+      items: ["React 19", "TypeScript", "Vite", "WebCodecs", "Cache API", "mp4-muxer"],
+    },
+    {
+      title: "ML & AI",
+      items: ["ONNX runtime-web (WASM inference)", "Tavus GenAI", "Demucs vocal separation"],
+    },
+    {
+      title: "CAD & Design",
+      items: ["Fusion 360", "SolidWorks", "Rhino", "Figma"],
+    },
+  ],
+  languages: "Chinese (native) · English (C1) · Spanish (B2)",
+};
+
+export const contactNote = "OPEN TO PLACEMENT-YEAR INTERNSHIP (APR–SEP) — RESUME ON REQUEST";
