@@ -1,3 +1,5 @@
+import cityBackground from "./assets/图库/背景.png";
+
 export const site = {
   name: "Chengyu Wang",
   firstName: "Chengyu",
@@ -12,7 +14,7 @@ export const site = {
   email: "cw2124@ic.ac.uk",
   phone: "+44 7741741955",
   city: "LONDON, UK / CHINA",
-  cityImage: "https://picsum.photos/seed/city/1920/1080",
+  cityImage: cityBackground,
   cv: "/cv.pdf",
   socials: [
     { label: "LINKEDIN ↗", href: "#" },

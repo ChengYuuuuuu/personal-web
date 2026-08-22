@@ -362,12 +362,13 @@ button {
   clip-path: inset(36% 30% 36% 30% round 20px);
 }
 
-.mask__img {
+.mask__bg {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  background-size: 100% auto;
+  background-repeat: repeat-y;
+  background-position: 0 0;
+  will-change: background-position;
 }
 
 .mask__scrim {
@@ -379,10 +380,11 @@ button {
 .mask__intro {
   position: relative;
   z-index: 3;
-  padding: clamp(48px, 10vh, 96px) var(--pad-x) 56px;
+  padding: 0 var(--pad-x) clamp(28px, 5vh, 44px);
   color: #fff;
   white-space: pre-wrap;
   pointer-events: none;
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.55), rgba(10, 10, 10, 0.3) 45%, transparent);
 }
 
 .mask__intro-inner {
@@ -395,7 +397,7 @@ button {
 .mask__intro .intro-char {
   opacity: 0;
   will-change: opacity;
-  transition: opacity 80ms linear;
+  transition: opacity 160ms linear;
 }
 
 .mask__intro-kicker {

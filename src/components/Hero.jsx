@@ -2,9 +2,10 @@ import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 const ease = [0.22, 1, 0.36, 1];
-const EXPAND_TO = 0.4;
-const TYPED_FROM = 0.3;
-const TYPED_TO = 0.62;
+const EXPAND_TO = 0.12;
+const TYPED_FROM = 0.05;
+const TYPED_TO = 0.65;
+const TILE_SPEED_MS = 20000;
 
 function Chars({ text }) {
   return text.split("").map((c, i) => (
@@ -54,6 +55,38 @@ export default function Hero({ role, tagline, status, intro, cityImage }) {
     };
   }, []);
 
+  useEffect(() => {
+    const section = ref.current;
+    const mask = section.querySelector(".hero__pin .mask");
+    const bg = section.querySelector(".mask__bg");
+    if (!mask || !bg) return;
+
+    let ratio = 2432 / 1728;
+    const img = new Image();
+    img.onload = () => {
+      if (img.naturalHeight) ratio = img.naturalHeight / img.naturalWidth;
+    };
+    img.src = cityImage;
+
+    let raf = 0;
+    let y = 0;
+    let last = performance.now();
+    const tick = (now) => {
+      const dt = now - last;
+      last = now;
+      const w = mask.clientWidth || window.innerWidth;
+      const tileH = w * ratio;
+      if (tileH > 0) {
+        y += (tileH * dt) / TILE_SPEED_MS;
+        if (y >= tileH) y -= tileH;
+        bg.style.backgroundPositionY = `${-y}px`;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [cityImage]);
+
   return (
     <section ref={ref} className="panel hero" id="top" data-panel={0}>
       <div className="hero__home">
@@ -93,7 +126,7 @@ export default function Hero({ role, tagline, status, intro, cityImage }) {
 
       <div className="hero__pin">
         <div className="mask">
-          <img className="mask__img" src={cityImage} alt="" aria-hidden loading="lazy" />
+          <div className="mask__bg" style={{ backgroundImage: `url(${cityImage})` }} />
           <div className="mask__scrim" aria-hidden />
         </div>
       </div>
