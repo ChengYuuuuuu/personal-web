@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Panel from "./Panel";
@@ -42,6 +42,16 @@ function LinkIcon({ icon }) {
 export default function Projects({ projects, more }) {
   const [active, setActive] = useState(null);
   const current = active != null ? projects[active] : null;
+  const pageRef = useRef(null);
+
+  const media = current
+    ? [
+        ...(current.video ? [{ type: "video", src: current.video }] : []),
+        ...(current.images || []).map((img) => ({ type: "image", src: img })),
+      ]
+    : [];
+  const leftMedia = media.filter((_, i) => i % 2 === 0);
+  const rightMedia = media.filter((_, i) => i % 2 === 1);
 
   useEffect(() => {
     const onKey = (e) => {
@@ -118,6 +128,7 @@ export default function Projects({ projects, more }) {
           {current && (
             <motion.div
               className="exp-page"
+              ref={pageRef}
               data-lenis-prevent
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -129,7 +140,7 @@ export default function Projects({ projects, more }) {
                 CLOSE ✕
               </button>
               <motion.div
-                className="exp-page__inner"
+                className="exp-page__inner exp-page__inner--wide"
                 initial={{ y: 40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: 24, opacity: 0 }}
@@ -142,34 +153,48 @@ export default function Projects({ projects, more }) {
                 <h2 className="exp-page__title">{current.title}</h2>
                 <p className="exp-page__summary">{current.subtitle}</p>
 
-                {current.video || current.images ? (
-                  <MediaWall
-                    items={[
-                      ...(current.video ? [{ type: "video", src: current.video }] : []),
-                      ...(current.images || []).map((img) => ({ type: "image", src: img })),
-                    ]}
-                  />
-                ) : null}
+                <div className="project-detail">
+                  {leftMedia.length > 0 && (
+                    <div className="project-detail__col project-detail__col--left">
+                      <MediaWall items={leftMedia} viewportRoot={pageRef} />
+                    </div>
+                  )}
 
-                <div className="masonry-card">
-                  <div className="masonry-card__rows">
-                    <Row label="Context" text={current.context} />
-                    <Row label="Role" text={current.role} />
-                    <Row label="Tech" text={current.tech} />
-                    <Row label="Result" text={current.result} />
+                  <div className="project-detail__center">
+                    <motion.div
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, root: pageRef, margin: "-10% 0px" }}
+                      transition={{ duration: 0.7, ease }}
+                    >
+                      <div className="masonry-card">
+                        <div className="masonry-card__rows">
+                          <Row label="Context" text={current.context} />
+                          <Row label="Role" text={current.role} />
+                          <Row label="Tech" text={current.tech} />
+                          <Row label="Result" text={current.result} />
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {current.links && current.links.length > 0 && (
+                      <div className="project-links">
+                        {current.links.map((l) => (
+                          <a key={l.href} href={l.href} target="_blank" rel="noreferrer">
+                            <LinkIcon icon={l.icon} />
+                            {l.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </div>
+
+                  {rightMedia.length > 0 && (
+                    <div className="project-detail__col project-detail__col--right">
+                      <MediaWall items={rightMedia} viewportRoot={pageRef} />
+                    </div>
+                  )}
                 </div>
-
-                {current.links && current.links.length > 0 && (
-                  <div className="project-links">
-                    {current.links.map((l) => (
-                      <a key={l.href} href={l.href} target="_blank" rel="noreferrer">
-                        <LinkIcon icon={l.icon} />
-                        {l.label}
-                      </a>
-                    ))}
-                  </div>
-                )}
               </motion.div>
             </motion.div>
           )}

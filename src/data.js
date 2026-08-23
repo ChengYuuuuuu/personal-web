@@ -1,7 +1,5 @@
 import cityBackground from "./assets/图库/背景.png";
 import scalextricVideo from "./assets/图库/scalextric_1.mp4";
-import scalextric2 from "./assets/图库/scalextric_2.png";
-import scalextric3 from "./assets/图库/scalextric_3.jpg";
 import strange1 from "./assets/图库/strange_1.mp4";
 import strange2 from "./assets/图库/strange_2.mp4";
 import koe1 from "./assets/图库/koe_1.mp4";
@@ -64,7 +62,6 @@ export const experience = [
       {
         title: "Brainwave-Controlled Scalextric · CeX Mind Control Campaign",
         video: scalextricVideo,
-        images: [scalextric2, scalextric3],
         mediaPosition: "bottom",
         rows: [
           {

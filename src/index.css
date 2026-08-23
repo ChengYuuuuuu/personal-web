@@ -535,6 +535,10 @@ button {
   padding: calc(var(--nav-h) + 56px) var(--pad-x) 72px;
 }
 
+.exp-page__inner--wide {
+  max-width: 1240px;
+}
+
 .exp-page__meta {
   font-size: 11px;
   letter-spacing: 0.22em;
@@ -722,6 +726,51 @@ button {
 
 .project-links a:hover {
   border-color: var(--fg);
+}
+
+.project-detail {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  align-items: start;
+  gap: clamp(18px, 2.6vw, 40px);
+  margin-top: clamp(32px, 5vh, 56px);
+}
+
+.project-detail__col {
+  min-width: 0;
+}
+
+.project-detail__col .media-wall {
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: clamp(18px, 2.6vw, 36px);
+}
+
+.project-detail__col .polaroid {
+  flex: 0 0 auto;
+  width: 100%;
+  margin-top: 0 !important;
+}
+
+.project-detail__center {
+  min-width: 0;
+}
+
+.project-detail__center .masonry-card {
+  width: 100%;
+}
+
+@media (max-width: 980px) {
+  .project-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .project-detail__col--right {
+    order: 3;
+  }
 }
 
 .project-tile {

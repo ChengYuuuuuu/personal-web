@@ -4,7 +4,7 @@ const ease = [0.22, 1, 0.36, 1];
 const TILTS = [-3, 2, -2, 3, -2];
 const OFFSETS = ["18px", "-10px", "26px", "-6px", "12px"];
 
-export default function MediaWall({ items }) {
+export default function MediaWall({ items, viewportRoot }) {
   return (
     <div className="polaroid-gallery media-wall">
       {items.map((m, i) => {
@@ -15,7 +15,7 @@ export default function MediaWall({ items }) {
             key={m.src}
             initial={{ opacity: 0, y: 40, rotate }}
             whileInView={{ opacity: 1, y: 0, rotate }}
-            viewport={{ once: true, margin: "-12% 0px" }}
+            viewport={{ once: true, root: viewportRoot, margin: "-12% 0px" }}
             transition={{ duration: 0.7, ease, delay: i * 0.18 }}
             style={{ marginTop: OFFSETS[i % OFFSETS.length] }}
           >
