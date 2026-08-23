@@ -384,7 +384,7 @@ button {
   color: #fff;
   white-space: pre-wrap;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(10, 10, 10, 0.55), rgba(10, 10, 10, 0.3) 45%, transparent);
+  background: linear-gradient(180deg, transparent, rgba(10, 10, 10, 0.7));
 }
 
 .mask__intro-inner {
@@ -456,6 +456,21 @@ button {
   padding: clamp(16px, 3vh, 26px) 0;
   border-top: 1px solid var(--line);
   cursor: pointer;
+}
+
+.exp-list__main {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  min-width: 0;
+}
+
+.exp-list__years {
+  flex-shrink: 0;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .exp-list__name {
@@ -546,106 +561,7 @@ button {
   max-width: 40em;
 }
 
-.exp-page__block {
-  margin-top: clamp(32px, 5vh, 56px);
-  border-top: 1px solid var(--line);
-  padding-top: 24px;
-}
-
-.exp-page__block h3 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(20px, 2.4vw, 30px);
-  margin-bottom: 18px;
-}
-
-.exp-page__rows {
-  display: flex;
-  flex-direction: column;
-}
-
-.exp-page__row {
-  display: grid;
-  grid-template-columns: 92px 1fr;
-  gap: 16px;
-  padding: 9px 0;
-  border-top: 1px solid var(--line);
-}
-
-.exp-page__row-label {
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding-top: 3px;
-}
-
-.exp-page__row-text {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--fg);
-}
-
-/* ============================================================
-   Projects — selected work cards
-   ============================================================ */
-.projects-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(16px, 2.4vw, 32px);
-}
-
-@media (max-width: 860px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.project-card {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(18px, 3vh, 30px);
-  border: 1px solid var(--line);
-  padding: clamp(18px, 3vh, 30px);
-  transition: border-color 0.3s ease;
-}
-
-.project-card:hover {
-  border-color: var(--fg);
-}
-
-.project-card__head {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.project-card__head .emo {
-  font-size: 42px;
-  line-height: 1;
-}
-
-.project-card__titles {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.project-card__title {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(24px, 2.6vw, 36px);
-  line-height: 1;
-}
-
-.project-card__sub {
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.project-card__meta {
+.masonry-card__meta {
   margin-left: auto;
   font-size: 10px;
   letter-spacing: 0.2em;
@@ -654,29 +570,340 @@ button {
   white-space: nowrap;
 }
 
-.project-card__rows {
+.masonry-card__rows {
   display: flex;
   flex-direction: column;
 }
 
-.project-row {
+.masonry-row {
   display: grid;
   grid-template-columns: 84px 1fr;
   gap: 16px;
-  padding: 10px 0;
+  padding: 8px 0;
   border-top: 1px solid var(--line);
 }
 
-.project-row__label {
+.masonry-row__label {
   font-size: 10px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
-.project-row__text {
+.masonry-row__text {
   font-size: 14px;
   line-height: 1.55;
+}
+
+/* ============================================================
+   Masonry — Xiaohongshu-style two-column waterfall
+   ============================================================ */
+.masonry {
+  columns: 2;
+  column-gap: clamp(14px, 2vw, 26px);
+}
+
+.masonry > * {
+  break-inside: avoid;
+  margin-bottom: clamp(12px, 2vw, 22px);
+}
+
+.exp-page__note {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2vw, 20px);
+  break-inside: avoid;
+}
+
+.exp-page__note .media-wall {
+  margin-top: 0;
+  padding: 0;
+}
+
+@media (max-width: 860px) {
+  .masonry {
+    columns: 1;
+  }
+}
+
+.masonry-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border: 1px solid var(--line);
+  padding: clamp(18px, 3vh, 30px);
+  transition: border-color 0.3s ease;
+}
+
+.masonry-card:hover {
+  border-color: var(--fg);
+}
+
+.masonry-card__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.masonry-card__head .emo {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.masonry-card__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.masonry-card__title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1;
+}
+
+.masonry-card__sub {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.masonry-card__label {
+  margin-left: auto;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.masonry-card__text {
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.masonry-card--media {
+  padding: 0;
+  background: #000;
+}
+
+.masonry-card__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #000;
+  border: 1px solid var(--line);
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(10px, 1.6vw, 18px);
+  margin-top: clamp(16px, 2vw, 24px);
+}
+
+.project-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg);
+  border: 1px solid var(--line);
+  padding: 10px 16px;
+  text-decoration: none;
+  transition: border-color 0.25s ease;
+}
+
+.project-links a:hover {
+  border-color: var(--fg);
+}
+
+.project-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: var(--fg);
+  background: none;
+  border: 1px solid var(--line);
+  padding: clamp(20px, 3vh, 32px);
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.project-tile:hover {
+  border-color: var(--fg);
+}
+
+.project-tile__emo {
+  font-size: clamp(56px, 7vw, 96px);
+  line-height: 1;
+}
+
+.project-tile__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.project-tile__date {
+  flex-shrink: 0;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 6px;
+}
+
+.project-tile__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.project-tile__title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(24px, 2.6vw, 38px);
+  line-height: 1.05;
+}
+
+.project-tile__sub {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.project-tile__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.project-tile__meta {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.project-tile__arrow {
+  font-size: 18px;
+  color: var(--muted);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.project-tile:hover .project-tile__arrow {
+  color: var(--fg);
+  transform: translate(3px, -3px);
+}
+
+.exp-page__video {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #000;
+  border: 1px solid var(--line);
+  margin-top: 24px;
+}
+
+.polaroid-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(10px, 1.6vw, 22px);
+  margin-top: clamp(32px, 5vh, 56px);
+  padding: clamp(16px, 3vh, 28px) 0;
+}
+
+.polaroid {
+  flex: 0 1 min(46%, 420px);
+  background: #fff;
+  padding: 10px 10px clamp(34px, 5vh, 46px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.32);
+  will-change: transform, opacity;
+}
+
+.polaroid img,
+.polaroid video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.polaroid:only-child {
+  flex: 0 1 min(92%, 460px);
+}
+
+.exp-page__split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: clamp(14px, 2vw, 26px);
+  align-items: start;
+  margin-top: clamp(32px, 5vh, 56px);
+}
+
+.exp-page__split .masonry-card {
+  width: 100%;
+}
+
+.exp-page__split .media-wall {
+  margin-top: 0;
+  padding: 0;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.exp-page__split .polaroid {
+  flex: 0 0 auto;
+  width: 100%;
+  margin-top: 0 !important;
+}
+
+@media (max-width: 860px) {
+.exp-page__full {
+  margin-top: clamp(32px, 5vh, 56px);
+}
+
+.exp-page__full .masonry-card {
+  width: 100%;
+}
+
+.exp-page__split {
+  grid-template-columns: 1fr;
+}
+
+.polaroid-gallery {
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(20px, 4vh, 36px);
+  }
+
+  .polaroid {
+    flex: 0 1 88%;
+  }
 }
 
 .projects-more {

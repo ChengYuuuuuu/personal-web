@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Panel from "./Panel";
+import MediaWall from "./MediaWall";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -40,6 +41,24 @@ export default function Experience({ id, index, kicker, groups }) {
     };
   }, [active]);
 
+  const renderCard = (b, i) => (
+    <motion.article
+      className="masonry-card"
+      {...item}
+      transition={{ ...item.transition, delay: (i % 2) * 0.06 }}
+    >
+      <h3 className="masonry-card__title">{b.title}</h3>
+      <div className="masonry-card__rows">
+        {b.rows.map((r) => (
+          <div className="masonry-row" key={r.label}>
+            <span className="masonry-row__label">{r.label}</span>
+            <span className="masonry-row__text">{r.text}</span>
+          </div>
+        ))}
+      </div>
+    </motion.article>
+  );
+
   return (
     <Panel id={id} index={index}>
       <div className="sec-head">
@@ -56,7 +75,10 @@ export default function Experience({ id, index, kicker, groups }) {
                 {group.items.map((e, i) => (
                   <motion.li key={e.name} {...item} transition={{ ...item.transition, delay: i * 0.05 }}>
                     <button className="exp-row-btn" onClick={() => setActive(offset + i)} aria-haspopup="dialog">
-                      <span className="exp-list__name">{e.name}</span>
+                      <span className="exp-list__main">
+                        <span className="exp-list__name">{e.name}</span>
+                        <span className="exp-list__years">{e.years}</span>
+                      </span>
                       <span className="exp-list__role">{e.role}</span>
                       <span className="exp-list__arrow" aria-hidden>
                         ↗
@@ -100,19 +122,50 @@ export default function Experience({ id, index, kicker, groups }) {
                 <h2 className="exp-page__title">{current.name}</h2>
                 <p className="exp-page__summary">{current.summary}</p>
 
-                {current.blocks.map((b) => (
-                  <div className="exp-page__block" key={b.title}>
-                    <h3>{b.title}</h3>
-                    <div className="exp-page__rows">
-                      {b.rows.map((r) => (
-                        <div className="exp-page__row" key={r.label}>
-                          <span className="exp-page__row-label">{r.label}</span>
-                          <span className="exp-page__row-text">{r.text}</span>
-                        </div>
-                      ))}
+                <div className="masonry">
+                  {current.blocks.map((b, i) => {
+                    if (b.polaroids || b.mediaPosition === "right") return null;
+                    const media = [
+                      ...(b.video ? [{ type: "video", src: b.video }] : []),
+                      ...(b.images || []).map((img) => ({ type: "image", src: img })),
+                    ];
+                    return (
+                      <div className="exp-page__note" key={b.title}>
+                        {media.length > 0 && b.mediaPosition !== "bottom" && (
+                          <MediaWall items={media} />
+                        )}
+                        {renderCard(b, i)}
+                        {media.length > 0 && b.mediaPosition === "bottom" && (
+                          <MediaWall items={media} />
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {current.blocks.map((b, i) => {
+                  if (b.mediaPosition !== "right") return null;
+                  const media = [
+                    ...(b.video ? [{ type: "video", src: b.video }] : []),
+                    ...(b.images || []).map((img) => ({ type: "image", src: img })),
+                  ];
+                  return (
+                    <div className="exp-page__split" key={b.title}>
+                      {renderCard(b, i)}
+                      <MediaWall items={media} />
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
+
+                {current.blocks.map((b, i) => {
+                  if (!b.polaroids) return null;
+                  return (
+                    <div className="exp-page__full" key={b.title}>
+                      {renderCard(b, i)}
+                      <MediaWall items={b.polaroids.map((img) => ({ type: "image", src: img }))} />
+                    </div>
+                  );
+                })}
               </motion.div>
             </motion.div>
           )}

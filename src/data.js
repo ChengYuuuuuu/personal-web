@@ -1,4 +1,25 @@
 import cityBackground from "./assets/图库/背景.png";
+import scalextricVideo from "./assets/图库/scalextric_1.mp4";
+import scalextric2 from "./assets/图库/scalextric_2.png";
+import scalextric3 from "./assets/图库/scalextric_3.jpg";
+import strange1 from "./assets/图库/strange_1.mp4";
+import strange2 from "./assets/图库/strange_2.mp4";
+import koe1 from "./assets/图库/koe_1.mp4";
+import koe2 from "./assets/图库/koe_2.png";
+import shouqu1 from "./assets/图库/shouqu_1.jpg";
+import shouqu2 from "./assets/图库/shouqu_2.jpg";
+import shemei1 from "./assets/图库/社媒_1.jpg";
+import shemei2 from "./assets/图库/社媒_2.jpg";
+import shemei3 from "./assets/图库/社媒_3.png";
+import liquid1 from "./assets/图库/liquid_1.png";
+import liquid2 from "./assets/图库/liquid_2.png";
+import liquid3 from "./assets/图库/liquid3.png";
+import plant1 from "./assets/图库/plant_1.png";
+import plant2 from "./assets/图库/plant_2.png";
+import plant3 from "./assets/图库/plant_3.png";
+import seat1 from "./assets/图库/seat_1.png";
+import seat2 from "./assets/图库/seat_2.png";
+import seat3 from "./assets/图库/seat_3.png";
 
 export const site = {
   name: "Chengyu Wang",
@@ -42,6 +63,9 @@ export const experience = [
     blocks: [
       {
         title: "Brainwave-Controlled Scalextric · CeX Mind Control Campaign",
+        video: scalextricVideo,
+        images: [scalextric2, scalextric3],
+        mediaPosition: "bottom",
         rows: [
           {
             label: "Situation",
@@ -63,6 +87,7 @@ export const experience = [
       },
       {
         title: "AI Vending Machines · SAGE Exhibition",
+        video: strange1,
         rows: [
           {
             label: "Action",
@@ -76,6 +101,7 @@ export const experience = [
       },
       {
         title: "Real-Time 3D Hologram Installation",
+        video: strange2,
         rows: [
           {
             label: "Action",
@@ -123,6 +149,8 @@ export const beyondWork = [
     blocks: [
       {
         title: "Canton Fair Interpreting",
+        images: [shouqu1, shouqu2],
+        mediaPosition: "right",
         rows: [
           {
             label: "Action",
@@ -141,31 +169,19 @@ export const beyondWork = [
     role: "CONTENT CREATOR & SOCIAL MEDIA OPERATOR",
     years: "2024–PRESENT",
     location: "REMOTE",
-    summary: "Grew an ACG content platform 0 → 50K followers; built KoePuppet as an in-house tool.",
+    summary: "Grew an ACG content platform 0 → 50K followers as a solo creator across RedNote, Douyin, Bilibili, and TikTok.",
     blocks: [
       {
-        title: "KoePuppet · Auto Lip-Sync Singing Generator",
+        title: "ACG Content Creator & Platform Operations",
+        polaroids: [shemei1, shemei2, shemei3],
         rows: [
           {
             label: "Context",
-            text: "Identified a surge in lip-sync meme demand on Chinese social platforms with no accessible tooling available.",
+            text: "Ran an ACG content platform as a solo creator — researching trends, scripting, producing, and shipping videos across Chinese social platforms.",
           },
           {
             label: "Action",
-            text: "Independently built a browser-only lip-sync generator: React/TypeScript frontend, ONNX runtime-web WASM inference, WebCodecs H.264/AAC encoding with deterministic offscreen rendering, mp4-muxer export, Cache API chunked loading of a 400MB+ model, Demucs vocal separation.",
-          },
-          {
-            label: "Result",
-            text: "A single launch post drove +5K followers and 1M+ cumulative plays; validated product-market fit with a real audience.",
-          },
-        ],
-      },
-      {
-        title: "ACG Content Platform Operations",
-        rows: [
-          {
-            label: "Action",
-            text: "Grew 0 → 50K followers across RedNote, Douyin, Bilibili, and TikTok by analyzing trends and building custom tools to serve content creation needs.",
+            text: "Grew 0 → 50K followers across RedNote, Douyin, Bilibili, and TikTok by analyzing trends; built in-house tools like KoePuppet to accelerate content production.",
           },
           {
             label: "Result",
@@ -184,10 +200,16 @@ export const projects = [
     subtitle: "Auto Lip-Sync Singing Generator",
     client: "PERSONAL",
     year: "2026",
+    video: koe1,
+    images: [koe2],
     context: "Surge in lip-sync meme demand with no accessible tooling — shipped a browser-only virtual singer app to fill the gap.",
     role: "Independent build — frontend, ML inference and render/export across the whole pipeline.",
     tech: "React 19 + TypeScript + Vite · SOFA alignment model on onnxruntime-web (WASM) with Viterbi decoding + G2P phoneme conversion (pinyin-pro + CN/JP/EN dictionaries) · Demucs vocal separation · WebCodecs (H.264/AAC) + mp4-muxer deterministic offline rendering · Cache API chunked loading of 400MB+ models with progress + resume",
     result: "Auto-aligns character art to lyrics and beat from NetEase/QQ Music links or local MP3+LRC, exporting H.264 video with no backend; a single launch post drove +5K followers and 1M+ cumulative plays.",
+    links: [
+      { icon: "github", label: "GITHUB", href: "https://github.com/ChengYuuuuuu/KoePuppet" },
+      { icon: "globe", label: "LIVE", href: "https://koepuppet.cc.cd/" },
+    ],
     link: "#",
   },
   {
@@ -196,6 +218,7 @@ export const projects = [
     subtitle: "CeX Mind Control Campaign",
     client: "ARCADE STRANGE / CEX",
     year: "2026",
+    video: scalextricVideo,
     context: "Brainwave-driven Scalextric racing for CeX's Mind Control campaign at SAGE Exhibition (London Excel).",
     role: "Sole owner of the working prototype in a 3-person team.",
     tech: "Raspberry Pi web app streaming Muse EEG attention scores over serial to an Arduino · MOSFET-based PWM track speed control · speed-limiter layer",
@@ -208,6 +231,7 @@ export const projects = [
     subtitle: "Product Design Engineering",
     client: "IMPERIAL COLLEGE LONDON",
     year: "2026",
+    images: [liquid1, liquid2, liquid3],
     context: "Assistive liquid level indicator designed for blind users.",
     role: "Co-developed concept → functional prototype with a 4-person team; served as CIO establishing technical partnerships and executing 3+ collaborative sprints with Beyond Sight.",
     tech: "ESP32 · enclosure modeling + PCB integration",
@@ -220,6 +244,7 @@ export const projects = [
     subtitle: "Physical Computing",
     client: "IMPERIAL COLLEGE LONDON",
     year: "2025",
+    images: [plant1, plant2, plant3],
     context: "Physical computing brief — a kinetic plant companion that responds to its environment.",
     role: "Modeled the assembly in Fusion 360; programmed the ESP32 in Arduino C++ for sensor fusion and motor control.",
     tech: "Fusion 360 · ESP32 · Arduino C++ · MATLAB (kinematics + power budgets)",
@@ -232,6 +257,7 @@ export const projects = [
     subtitle: "Sustainable Design Engineering",
     client: "IMPERIAL COLLEGE LONDON",
     year: "2025",
+    images: [seat1, seat2, seat3],
     context: "Sustainable design brief — a modular aircraft seat applying circular economy principles.",
     role: "Designed the modular seat in Rhino applying circular economy principles.",
     tech: "Rhino · Granta Eco Audit (full lifecycle assessment)",
