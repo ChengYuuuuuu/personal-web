@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Panel from "./Panel";
-import MediaWall from "./MediaWall";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -12,15 +11,6 @@ const item = {
   viewport: { once: false, margin: "-8% 0px" },
   transition: { duration: 0.7, ease },
 };
-
-function Row({ label, text }) {
-  return (
-    <div className="masonry-row">
-      <span className="masonry-row__label">{label}</span>
-      <span className="masonry-row__text">{text}</span>
-    </div>
-  );
-}
 
 function LinkIcon({ icon }) {
   if (icon === "github") {
@@ -43,15 +33,6 @@ export default function Projects({ projects, more }) {
   const [active, setActive] = useState(null);
   const current = active != null ? projects[active] : null;
   const pageRef = useRef(null);
-
-  const media = current
-    ? [
-        ...(current.video ? [{ type: "video", src: current.video }] : []),
-        ...(current.images || []).map((img) => ({ type: "image", src: img })),
-      ]
-    : [];
-  const leftMedia = media.filter((_, i) => i % 2 === 0);
-  const rightMedia = media.filter((_, i) => i % 2 === 1);
 
   useEffect(() => {
     const onKey = (e) => {
@@ -83,31 +64,49 @@ export default function Projects({ projects, more }) {
         <span className="arrow">↗</span>
       </div>
 
-      <div className="masonry">
+      <div className="projects-list">
         {projects.map((p, i) => (
           <motion.button
             key={p.title}
             type="button"
-            className="project-tile"
+            className="project-card"
             onClick={() => setActive(i)}
             {...item}
-            transition={{ ...item.transition, delay: (i % 2) * 0.08 }}
+            transition={{ ...item.transition, delay: (i % 2) * 0.06 }}
+            aria-label={`View ${p.title} project details`}
           >
-            <span className="project-tile__emo" aria-hidden>
-              {p.emoji}
-            </span>
-            <div className="project-tile__head">
-              <div className="project-tile__titles">
-                <h3 className="project-tile__title">{p.title}</h3>
-                <span className="project-tile__sub">{p.subtitle}</span>
-              </div>
-              <span className="project-tile__date">{p.year}</span>
-            </div>
-            <span className="project-tile__foot">
-              <span className="project-tile__meta">{p.client}</span>
-              <span className="project-tile__arrow" aria-hidden>
-                ↗
+            <span className="project-card__main">
+              <span className="project-card__copy">
+                <span className="project-card__number">0{i + 1}</span>
+                <span className="project-card__titles">
+                  <span className="project-card__title">{p.title}</span>
+                  <span className="project-card__subtitle">{p.subtitle}</span>
+                </span>
+                <span className="project-card__open" aria-hidden>↗</span>
               </span>
+              <span className="project-card__visual" aria-hidden="true">
+                {p.video ? (
+                  <video src={p.video} autoPlay muted loop playsInline />
+                ) : p.images?.[0] ? (
+                  <img src={p.images[0]} alt="" loading="lazy" />
+                ) : (
+                  <span className="project-card__visual-empty">Project documentation</span>
+                )}
+                {((p.video && p.images?.[0]) || p.images?.[1]) && (
+                  <img
+                    className="project-card__alternate"
+                    src={p.video ? p.images[0] : p.images[1]}
+                    alt=""
+                    loading="lazy"
+                  />
+                )}
+              </span>
+            </span>
+            <span className="project-card__facts">
+              <span className="project-card__fact"><span>Role</span><span>{p.role}</span></span>
+              <span className="project-card__fact"><span>Year</span><span>{p.year}</span></span>
+              <span className="project-card__fact"><span>Tools</span><span>{p.cardTools || p.tech}</span></span>
+              <span className="project-card__fact"><span>Outcome</span><span>{p.result}</span></span>
             </span>
           </motion.button>
         ))}
@@ -153,76 +152,65 @@ export default function Projects({ projects, more }) {
                 <h2 className="exp-page__title">{current.title}</h2>
                 <p className="exp-page__summary">{current.subtitle}</p>
 
-                {current.fullBleedVideo ? (
-                  <div className="project-showcase">
-                    <motion.video
-                      className="project-showcase__video"
-                      src={current.video}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      controls
-                      initial={{ opacity: 0, y: 28 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.7, ease }}
-                    />
-                    <motion.div
-                      className="project-showcase__copy"
-                      initial={{ opacity: 0, y: 24 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, root: pageRef, margin: "-10% 0px" }}
-                      transition={{ duration: 0.65, ease }}
-                    >
-                      <span className="project-showcase__label">MODELLING / RENDERING / ANIMATION</span>
-                      <p>{current.technicalNote}</p>
-                      <span className="project-showcase__tools">{current.tech}</span>
-                    </motion.div>
-                  </div>
-                ) : (
-                <div className="project-detail">
-                  {leftMedia.length > 0 && (
-                    <div className="project-detail__col project-detail__col--left">
-                      <MediaWall items={leftMedia} viewportRoot={pageRef} />
-                    </div>
-                  )}
+                <div className="project-story">
+                  <section className="project-story__hero" aria-label="Project hero media">
+                    {current.video ? (
+                      <video src={current.video} autoPlay muted loop playsInline controls />
+                    ) : current.images?.[0] ? (
+                      <img src={current.images[0]} alt={`${current.title} project`} />
+                    ) : null}
+                  </section>
 
-                  <div className="project-detail__center">
-                    <motion.div
-                      initial={{ opacity: 0, y: 40 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, root: pageRef, margin: "-10% 0px" }}
-                      transition={{ duration: 0.7, ease }}
-                    >
-                      <div className="masonry-card">
-                        <div className="masonry-card__rows">
-                          <Row label="Context" text={current.context} />
-                          <Row label="Role" text={current.role} />
-                          <Row label="Tech" text={current.tech} />
-                          <Row label="Result" text={current.result} />
-                        </div>
-                      </div>
-                    </motion.div>
-
-                    {current.links && current.links.length > 0 && (
-                      <div className="project-links">
-                        {current.links.map((l) => (
-                          <a key={l.href} href={l.href} target="_blank" rel="noreferrer">
-                            <LinkIcon icon={l.icon} />
-                            {l.label}
-                          </a>
+                  <section className="project-story__section">
+                    <h3>Problem</h3>
+                    <p>{current.context}</p>
+                  </section>
+                  <section className="project-story__section">
+                    <h3>My role</h3>
+                    <p>{current.role}</p>
+                  </section>
+                  <section className="project-story__section project-story__section--media">
+                    <h3>Process</h3>
+                    {current.images?.length > (current.video ? 0 : 1) ? (
+                      <div className="project-story__gallery">
+                        {current.images.slice(current.video ? 0 : 1).map((src, i) => (
+                          <img key={src} src={src} alt={`${current.title} process view ${i + 1}`} loading="lazy" />
                         ))}
                       </div>
+                    ) : (
+                      <p className="project-story__placeholder">Process documentation will be added here.</p>
                     )}
-                  </div>
+                  </section>
+                  <section className="project-story__section project-story__prototype">
+                    <h3>Prototype</h3>
+                    <p>{current.prototype || "Prototype imagery and iteration notes will be added here."}</p>
+                  </section>
+                  <section className="project-story__section">
+                    <h3>Engineering</h3>
+                    <p>{current.tech}</p>
+                  </section>
+                  {current.technicalNote && (
+                    <section className="project-story__section">
+                      <h3>Build notes</h3>
+                      <p>{current.technicalNote}</p>
+                    </section>
+                  )}
+                  <section className="project-story__section">
+                    <h3>Result</h3>
+                    <p>{current.result}</p>
+                  </section>
 
-                  {rightMedia.length > 0 && (
-                    <div className="project-detail__col project-detail__col--right">
-                      <MediaWall items={rightMedia} viewportRoot={pageRef} />
+                  {current.links?.length > 0 && (
+                    <div className="project-links">
+                      {current.links.map((l) => (
+                        <a key={l.href} href={l.href} target="_blank" rel="noreferrer">
+                          <LinkIcon icon={l.icon} />
+                          {l.label}
+                        </a>
+                      ))}
                     </div>
                   )}
                 </div>
-                )}
               </motion.div>
             </motion.div>
           )}
