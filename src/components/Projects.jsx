@@ -153,6 +153,33 @@ export default function Projects({ projects, more }) {
                 <h2 className="exp-page__title">{current.title}</h2>
                 <p className="exp-page__summary">{current.subtitle}</p>
 
+                {current.fullBleedVideo ? (
+                  <div className="project-showcase">
+                    <motion.video
+                      className="project-showcase__video"
+                      src={current.video}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      controls
+                      initial={{ opacity: 0, y: 28 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.7, ease }}
+                    />
+                    <motion.div
+                      className="project-showcase__copy"
+                      initial={{ opacity: 0, y: 24 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, root: pageRef, margin: "-10% 0px" }}
+                      transition={{ duration: 0.65, ease }}
+                    >
+                      <span className="project-showcase__label">MODELLING / RENDERING / ANIMATION</span>
+                      <p>{current.technicalNote}</p>
+                      <span className="project-showcase__tools">{current.tech}</span>
+                    </motion.div>
+                  </div>
+                ) : (
                 <div className="project-detail">
                   {leftMedia.length > 0 && (
                     <div className="project-detail__col project-detail__col--left">
@@ -195,6 +222,7 @@ export default function Projects({ projects, more }) {
                     </div>
                   )}
                 </div>
+                )}
               </motion.div>
             </motion.div>
           )}

@@ -2,6 +2,7 @@ import cityBackground from "./assets/图库/背景.webp";
 import scalextricVideo from "./assets/图库/scalextric_1.mp4";
 import strange1 from "./assets/图库/strange_1.mp4";
 import strange2 from "./assets/图库/strange_2.mp4";
+import hectorLampVideo from "./assets/图库/hector_lamp.mp4";
 import koe1 from "./assets/图库/koe_1.mp4";
 import koe2 from "./assets/图库/koe_2.webp";
 import shouqu1 from "./assets/图库/shouqu_1.webp";
@@ -259,6 +260,21 @@ export const projects = [
     role: "Designed the modular seat in Rhino applying circular economy principles.",
     tech: "Rhino · Granta Eco Audit (full lifecycle assessment)",
     result: "35% mass reduction, >95% material recovery; validated 54,000 kg CO2e savings per seat.",
+    link: "#",
+  },
+  {
+    emoji: "💡",
+    title: "HECTOR Lamp",
+    subtitle: "Industrial Design & Product Visualisation",
+    client: "PERSONAL",
+    year: "2026",
+    video: hectorLampVideo,
+    fullBleedVideo: true,
+    context: "A focused modelling and rendering study of the HECTOR desk lamp.",
+    role: "CAD modelling, material setup, lighting, animation and final edit.",
+    tech: "CAD · KeyShot Studio · Material setup · Lighting · Camera animation · Video editing",
+    result: "A concise product film that explains form, assembly and illumination through technically controlled visuals.",
+    technicalNote: "I built the lamp as a clean, part-based CAD assembly, keeping the shade, arm, joints, base and cable independently controllable for animation. In KeyShot, I developed the brushed-aluminium response, tuned edge highlights and contrast, and used restrained camera movement to make the construction and lighting behaviour readable. The final sequence combines product views, detail shots and an exploded assembly into one practical 27-second film.",
     link: "#",
   },
 ];
