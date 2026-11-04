@@ -237,7 +237,7 @@ export const projects = [
     year: "2026",
     cover: liquidFinal,
     images: [liquid1, liquid2, liquid3],
-    prototypeVideo: liquidDemo,
+    showcaseVideo: liquidDemo,
     cardTools: "ESP32 · CAD · PCB integration",
     prototype: "A functional liquid-level indicator prototype with haptic feedback for blind and low-vision users.",
     context: "Assistive liquid level indicator designed for blind users.",

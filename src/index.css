@@ -1412,14 +1412,6 @@ button {
   min-width: 0;
 }
 
-.project-story__prototype-media {
-  display: block;
-  width: 100%;
-  max-height: 72vh;
-  margin-top: 20px;
-  background: #111;
-}
-
 .project-links a:hover,
 .projects-more a:hover {
   color: var(--accent);

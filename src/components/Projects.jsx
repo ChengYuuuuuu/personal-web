@@ -87,6 +87,8 @@ export default function Projects({ projects, more }) {
               <span className="project-card__visual" aria-hidden="true">
                 {p.video ? (
                   <video src={p.video} autoPlay muted loop playsInline />
+                ) : p.showcaseVideo && p.images?.[0] ? (
+                  <img src={p.images[0]} alt="" loading="lazy" />
                 ) : p.cover ? (
                   <img src={p.cover} alt="" loading="lazy" />
                 ) : p.images?.[0] ? (
@@ -94,10 +96,10 @@ export default function Projects({ projects, more }) {
                 ) : (
                   <span className="project-card__visual-empty">Project documentation</span>
                 )}
-                {((p.video && p.images?.[0]) || (p.cover && p.images?.[0]) || p.images?.[1]) && (
+                {((p.showcaseVideo && p.cover) || (p.video && p.images?.[0]) || (p.cover && p.images?.[0]) || p.images?.[1]) && (
                   <img
                     className="project-card__alternate"
-                    src={p.video || p.cover ? p.images[0] : p.images[1]}
+                    src={p.showcaseVideo ? p.cover : p.video || p.cover ? p.images[0] : p.images[1]}
                     alt=""
                     loading="lazy"
                   />
@@ -156,7 +158,15 @@ export default function Projects({ projects, more }) {
 
                 <div className="project-story">
                   <section className="project-story__hero" aria-label="Project hero media">
-                    {current.video ? (
+                    {current.showcaseVideo ? (
+                      <video
+                        src={current.showcaseVideo}
+                        poster={current.cover}
+                        controls
+                        playsInline
+                        preload="metadata"
+                      />
+                    ) : current.video ? (
                       <video src={current.video} autoPlay muted loop playsInline controls />
                     ) : current.cover ? (
                       <img src={current.cover} alt={`${current.title} final prototype`} />
@@ -175,9 +185,9 @@ export default function Projects({ projects, more }) {
                   </section>
                   <section className="project-story__section project-story__section--media">
                     <h3>Process</h3>
-                    {current.images?.length > (current.video || current.cover ? 0 : 1) ? (
+                    {current.images?.length > (current.showcaseVideo || current.video || current.cover ? 0 : 1) ? (
                       <div className="project-story__gallery">
-                        {current.images.slice(current.video || current.cover ? 0 : 1).map((src, i) => (
+                        {current.images.slice(current.showcaseVideo || current.video || current.cover ? 0 : 1).map((src, i) => (
                           <img key={src} src={src} alt={`${current.title} process view ${i + 1}`} loading="lazy" />
                         ))}
                       </div>
@@ -189,16 +199,6 @@ export default function Projects({ projects, more }) {
                     <h3>Prototype</h3>
                     <div className="project-story__prototype-content">
                       <p>{current.prototype || "Prototype imagery and iteration notes will be added here."}</p>
-                      {current.prototypeVideo && (
-                        <video
-                          className="project-story__prototype-media"
-                          src={current.prototypeVideo}
-                          poster={current.cover}
-                          controls
-                          playsInline
-                          preload="metadata"
-                        />
-                      )}
                     </div>
                   </section>
                   <section className="project-story__section">
