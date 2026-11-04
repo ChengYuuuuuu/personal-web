@@ -13,6 +13,8 @@ import shemei3 from "./assets/图库/社媒_3.webp";
 import liquid1 from "./assets/图库/liquid_1.webp";
 import liquid2 from "./assets/图库/liquid_2.webp";
 import liquid3 from "./assets/图库/liquid3.webp";
+import liquidFinal from "./assets/图库/pde_final.jpg";
+import liquidDemo from "./assets/图库/pde_video_web.mp4";
 import plant1 from "./assets/图库/plant_1.webp";
 import plant2 from "./assets/图库/plant_2.webp";
 import plant3 from "./assets/图库/plant_3.webp";
@@ -233,7 +235,9 @@ export const projects = [
     subtitle: "Product Design Engineering",
     client: "IMPERIAL COLLEGE LONDON",
     year: "2026",
+    cover: liquidFinal,
     images: [liquid1, liquid2, liquid3],
+    prototypeVideo: liquidDemo,
     cardTools: "ESP32 · CAD · PCB integration",
     prototype: "A functional liquid-level indicator prototype with haptic feedback for blind and low-vision users.",
     context: "Assistive liquid level indicator designed for blind users.",
