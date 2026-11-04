@@ -85,10 +85,8 @@ export default function Projects({ projects, more }) {
                 <span className="project-card__open" aria-hidden>↗</span>
               </span>
               <span className="project-card__visual" aria-hidden="true">
-                {p.video ? (
-                  <video src={p.video} autoPlay muted loop playsInline />
-                ) : p.showcaseVideo && p.images?.[0] ? (
-                  <img src={p.images[0]} alt="" loading="lazy" />
+                {p.video || p.showcaseVideo ? (
+                  <video src={p.video || p.showcaseVideo} autoPlay muted loop playsInline />
                 ) : p.cover ? (
                   <img src={p.cover} alt="" loading="lazy" />
                 ) : p.images?.[0] ? (
